@@ -69,7 +69,7 @@ router.get('/post/:id', async (req, res) => {
             description: "Simple Blog created with NodeJs, Express, & MongoDB.",
         }
 
-        res.render('layouts/post', { locals, data, currentRoute: `post/${slug}`, });
+        res.render('post/index', { locals, data, currentRoute: `post/${slug}`, });
     } catch (error) {
         console.log(error);
     }

@@ -1,15 +1,5 @@
 <div class="container">
-    <h2>Add New Comment</h2>
-      
-    <form action="/add-comment" method="POST">
-    
-    <label for="comment title"><b>Comment</b></label>
-    <input type="text" placeholder="Comment Title" name="comment title">
-    
-    <label for="body"><b>Content</b></label>
-    <textarea name="body" cols="50" rows="10"></textarea>
-    
-    <input type="submit" value="Add" class="btn">
-    
-    </form>
+    <h3><%= data.title %></h3>
+    <p><%= data.body %></p>
+
 </div>

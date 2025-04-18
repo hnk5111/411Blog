@@ -243,7 +243,7 @@ router.post('/register', async (req, res) => {
  * DELETE /
  * Admin - Delete Post
 */
-router.delete('delete-post/:id', authMiddleware, async (req, res) => {
+router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
   try {
     await Post.deleteOne({ _id: req.params.id })
     res.redirect('/dashboard');
