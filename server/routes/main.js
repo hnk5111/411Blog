@@ -57,7 +57,7 @@ router.get('/contact', (req, res) => {
 /**
  * GET /
  * Post :id
- */
+ 
 router.get('/post/:id', async (req, res) => {
     try {
         let slug = req.params.id;
@@ -74,6 +74,7 @@ router.get('/post/:id', async (req, res) => {
         console.log(error);
     }
 });
+*/
 
 /**
  * POST /

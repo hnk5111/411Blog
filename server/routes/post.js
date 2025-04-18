@@ -1,6 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const Comment = require('../models/Comment');
+const Post = require('../models/Post');
+
+/**
+ * GET /
+ * Add Comment
+*/
+router.get('/post/:postId', async (req, res) => {
+  try {
+    const { postId } = req.params; 
+
+    const data = await Post.findById(postId);
+
+    const comments = await Comment.find({ postId }).exec();
+
+    res.render('post', {
+      title: data.title,
+      postId,
+      data,
+      comments,
+      currentRoute : `/post/${postId}`
+    });
+
+  } catch (error) {
+    console.log(error);
+  }
+
+});
 /**
  * GET /
  * Comment :id
@@ -24,18 +51,18 @@ router.get('/comment/:id', async (req, res) => {
 
 /**
  * GET /
- * Create New Comment
+ * Add Comment
 */
-router.get('/add-comment', async (req, res) => {
+router.get('/add-comment/:postId', async (req, res) => {
   try {
-    const locals = {
-      title: 'Add Comment',
-      description: 'Simple Blog created with NodeJs, Express & MongoDb.'
-    }
+    const { postId } = req.params; 
 
-    const data = await Comment.find();
+    const post = await Post.findById(postId);
+
     res.render('add-comment', {
-      locals,
+      title: 'Add Comment',
+      postId,
+      post
     });
 
   } catch (error) {
@@ -47,21 +74,20 @@ router.get('/add-comment', async (req, res) => {
 
 /**
  * POST /
- * Create New Comment
+ * Add Comment
 */
 router.post('/add-comment', async (req, res) => {
   try {
-    try{
-      const newComment = new Comment({
-        title: req.body.title,
-        body: req.body.body
-      });
+    const { title, body, postId } = req.body;
+    const newComment = new Comment({
+      title,
+      body,
+      postId,
+    });
 
-      await Comment.create(newComment);
-      res.redirect(`/post/${newComment._id}` );
-    }catch(error){
-      console.log(error);
-    }
+    await newComment.save();
+
+    res.redirect(`/post/${postId}` );
 
   } catch (error) {
     console.log(error);
