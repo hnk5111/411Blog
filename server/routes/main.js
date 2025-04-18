@@ -106,11 +106,11 @@ router.post('/search', async (req, res) => {
         console.log(error);
     }
 });
-
+/*
 /**
  * GET /
  * Comment :id
- */
+
 router.get('post/comment/:id', async (req, res) => {
     try {
         let slug = req.params.id;
@@ -131,7 +131,7 @@ router.get('post/comment/:id', async (req, res) => {
 /**
  * GET /
  * Create New Comment
-*/
+
 router.get('/add-comment', authMiddleware, async (req, res) => {
   try {
     const locals = {
@@ -154,7 +154,7 @@ router.get('/add-comment', authMiddleware, async (req, res) => {
 /**
  * POST /
  * Create New Comment
-*/
+
 router.post('/add-comment', authMiddleware, async (req, res) => {
   try {
     try{
@@ -179,7 +179,7 @@ router.post('/add-comment', authMiddleware, async (req, res) => {
 /**
  * GET /
  * Create New Comment
-*/
+
 router.get('/edit-comment/:id', authMiddleware, async (req, res) => {
   try {
     const locals = {
@@ -202,7 +202,6 @@ router.get('/edit-comment/:id', authMiddleware, async (req, res) => {
 /**
  * PUT /
  * Create New Comment
-*/
 router.put('/edit-comment/:id', authMiddleware, async (req, res) => {
   try {
     await Comment.findByIdAndUpdate(req.params.id, {
@@ -217,6 +216,7 @@ router.put('/edit-comment/:id', authMiddleware, async (req, res) => {
   }
 
 });
+*/
 
 
 module.exports = router;
