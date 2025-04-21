@@ -323,3 +323,17 @@ img {
     justify-content: space-between;
     padding: 10px 0;
 }
+.comments {
+    margin-bottom: 40px;
+}
+.add-comment-container h2{
+    margin-top: 40px;
+}
+.comment-container {
+    white-space: none;
+}
+.comment-container h4, p {
+    padding: 4px;
+    margin: 0px;
+    white-space: none;
+}
