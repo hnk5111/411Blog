@@ -326,6 +326,12 @@ img {
 .comments {
     margin-bottom: 40px;
 }
+.comments h4 {
+    padding-left: 20px;
+}
+.comments p {
+    padding-left: 20px;
+}
 .add-comment-container h2{
     margin-top: 40px;
 }
